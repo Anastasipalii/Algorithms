@@ -1,0 +1,98 @@
+Level 1
+
+Дано натуральное число N. Выведите слово YES, если число N является точной степенью двойки, или слово NO в противном случае.
+Операцией возведения в степень пользоваться нельзя!
+
+Ввод YES
+Вывод 8
+
+Ввод NO
+Вывод 3
+
+Ввод N
+если (N & (N - 1)) == 0 и N != 0, то
+    Вывод YES
+иначе
+    Вывод NO
+
+
+
+
+
+Дано натуральное число N. Вычислите сумму его цифр.
+При решении этой задачи нельзя использовать строки, списки, массивы (ну и циклы, разумеется).
+
+Ввод 179
+Вывод 17
+
+Ввод 985
+Вывод 22
+
+
+Ввод N
+Сумма = 0
+
+Повторять до тех пор, пока N > 0:
+    Сумма += N % 10
+    N = (N - N % 10) / 10
+
+Вывод Сумма
+
+
+
+
+
+
+Level 2
+
+Напишите рекурсивный метод, который выводит на экран числа Фибоначчи до N-ого элемента.
+
+public class Fibonacci {
+    public static void printFibonacci(int N) {
+        for (int i = 0; i < N; i++) {
+            System.out.print(fibonacci(i) + " ");
+        }
+    }
+
+    private static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+    }
+
+    public static void main(String[] args) {
+        int N = 10; 
+        printFibonacci(N);
+    }
+}
+
+
+Напишите рекурсивный метод, который проверяет, является ли строка палиндромом.
+
+
+public class PalindromeChecker {
+    public static boolean isPalindrome(String str) {
+        String cleanedStr = str.replaceAll("\\s", "").toLowerCase();
+        return isPalindromeRecursive(cleanedStr, 0, cleanedStr.length() - 1);
+    }
+
+    private static boolean isPalindromeRecursive(String str, int start, int end) {
+        if (start >= end) {
+            return true;
+        }
+
+       
+        if (str.charAt(start) == str.charAt(end)) {
+            return isPalindromeRecursive(str, start + 1, end - 1);
+        } else {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        String input = "A man a plan a canal Panama";
+        System.out.println(isPalindrome(input));
+    }
+}
